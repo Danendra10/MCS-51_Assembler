@@ -1,4 +1,4 @@
-;Program jika sensor active low
+;Program jika sensor active high
 $NOMOD51
 $INCLUDE (8051.MCU)
 
@@ -13,19 +13,19 @@ Start:
     MOV P2, #00000000b
 
 Loop:
-    CJNE P1, #01100000b, MotionMaju
-    CJNE P1, #01000000b, MotionMaju
-    CJNE P1, #00100000b, MotionMaju
+    CJNE P1, #10010000b, MotionMaju
+    CJNE P1, #10110000b, MotionMaju
+    CJNE P1, #11010000b, MotionMaju
     ;motion kiri
-    CJNE P1, #11100000b, MotionKiri
-    CJNE P1, #11000000b, MotionKiri
-    CJNE P1, #10100000b, MotionKiri
+    CJNE P1, #00010000b, MotionKiri
+    CJNE P1, #00110000b, MotionKiri
+    CJNE P1, #01010000b, MotionKiri
     ;motion kanan
-    CJNE P1, #01110000b, MotionKanan
-    CJNE P1, #00110000b, MotionKanan
-    CJNE P1, #01010000b, MotionKanan
+    CJNE P1, #10000000b, MotionKanan
+    CJNE P1, #11000000b, MotionKanan
+    CJNE P1, #10100000b, MotionKanan
     ;motion mundur
-    CJNE P1, #00000000b, MotionMundur
+    CJNE P1, #11110000b, MotionMundur
 
 MotionMaju:
     MOV P2, #00000101b
